@@ -1,0 +1,9 @@
+retailenv/ 
+venv/ 
+.env/ 
+__pycache__/ 
+*.pyc 
+.ipynb_checkpoints/ 
+.streamlit/ 
+.DS_Store 
+Thumbs.db 

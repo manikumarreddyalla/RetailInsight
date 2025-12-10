@@ -1,0 +1,331 @@
+elif page == "Predict Product Sales":
+    st.title("📈 Product Sales Analytics Dashboard")
+
+    if sales_df is None:
+        st.error("Sales dataset missing.")
+    else:
+        # ---------------- PRODUCT DROPDOWN ----------------
+        product_list = sorted(sales_df["product_id"].unique())
+        selected_product = st.selectbox("Select Product", product_list)
+
+        # Filter selected product
+        p_df = sales_df[sales_df["product_id"] == selected_product].copy()
+
+        # Convert date
+        p_df["date"] = pd.to_datetime(p_df["date"], errors="coerce")
+        p_df = p_df.dropna(subset=["date"])
+
+        # ---------------- MONTHLY AGGREGATION ----------------
+        p_df["month"] = p_df["date"].dt.to_period("M").dt.to_timestamp()
+        monthly = (
+            p_df.groupby("month")["quantity_sold"]
+            .sum()
+            .reset_index()
+            .sort_values("month")
+        )
+
+        if monthly.empty:
+            st.warning("Not enough data to analyze this product.")
+        else:
+            # ---------------- LINE PLOT ----------------
+            import matplotlib.pyplot as plt
+
+            fig, ax = plt.subplots(figsize=(10,5))
+            ax.plot(
+                monthly["month"],
+                monthly["quantity_sold"],
+                marker="o",
+                color="#1f77b4",
+                linewidth=2.5,
+                markersize=8
+            )
+
+            ax.set_title(f"Monthly Sales for {selected_product}", fontsize=18, fontweight="bold")
+            ax.set_xlabel("Month", fontsize=12)
+            ax.set_ylabel("Quantity Sold", fontsize=12)
+
+            plt.xticks(rotation=45)
+            plt.grid(True, linestyle="--", alpha=0.3)
+
+            st.pyplot(fig)
+
+            # ---------------- ANALYTICS SUMMARY ----------------
+            st.subheader("📊 Product Insights Summary")
+
+            latest_month_sales = monthly["quantity_sold"].iloc[-1]
+            prev_month_sales   = monthly["quantity_sold"].iloc[-2] if len(monthly) > 1 else 0
+            growth = latest_month_sales - prev_month_sales
+
+            # Naive prediction for next month
+            next_month_prediction = int(latest_month_sales + (growth * 0.6))
+
+            # Seasonality effect (coefficient)
+            seasonality_score = round(monthly["quantity_sold"].std() / monthly["quantity_sold"].mean(), 2)
+
+            # Peak and lowest months
+            peak_row = monthly.loc[monthly["quantity_sold"].idxmax()]
+            low_row  = monthly.loc[monthly["quantity_sold"].idxmin()]
+
+            # Trend direction
+            if growth > 0:
+                trend = "📈 Increasing"
+                trend_color = "green"
+            elif growth < 0:
+                trend = "📉 Decreasing"
+                trend_color = "red"
+            else:
+                trend = "➖ Stable"
+                trend_color = "gray"
+
+            # ---------------- DISPLAY METRICS ----------------
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                st.metric("Last Month Sales", latest_month_sales)
+
+            with col2:
+                st.metric("Growth (MoM)", growth)
+
+            with col3:
+                st.metric("Next Month Prediction", next_month_prediction)
+
+            col4, col5, col6 = st.columns(3)
+
+            with col4:
+                st.metric("Seasonality Effect", seasonality_score)
+
+            with col5:
+                st.metric("Peak Month", peak_row["month"].strftime("%b %Y"))
+
+            with col6:
+                st.metric("Lowest Month", low_row["month"].strftime("%b %Y"))
+
+            # ---------------- TREND TAG ----------------
+            st.markdown(
+                f"<h4>Overall Trend: <span style='color:{trend_color};'>{trend}</span></h4>",
+                unsafe_allow_html=True
+            )
+
+            st.info("These insights are generated using recent sales trends. MATPFN-based predictions will replace this soon.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            elif page == "Predict Product Sales":
+    st.title("📈 Product Sales Analytics Dashboard")
+
+    # PRODUCT SELECTION
+    product_list = sorted(sales_df["product_id"].unique())
+    selected_product = st.selectbox("Select Product", product_list)
+
+    # FILTER PRODUCT DATA
+    p_df = sales_df[sales_df["product_id"] == selected_product].copy()
+    p_df["date"] = pd.to_datetime(p_df["date"], errors="coerce")
+    p_df = p_df.dropna(subset=["date"])
+
+    # LOAD PRODUCT INFO IF AVAILABLE
+    if "product_id" in product_df.columns:
+        prod_info = product_df[product_df["product_id"] == selected_product]
+    else:
+        prod_info = None
+
+    # ============================
+    # PRODUCT INFO CARD
+    # ============================
+    st.subheader("🧾 Product Information")
+
+    if prod_info is not None and not prod_info.empty:
+        info_row = prod_info.iloc[0]
+        colA, colB, colC = st.columns(3)
+
+        with colA:
+            st.metric("Product ID", selected_product)
+
+        with colB:
+            st.metric("Category", str(info_row.get("category", "N/A")))
+
+        with colC:
+            st.metric("Price", str(info_row.get("price", "N/A")))
+    else:
+        st.info("No product metadata available (optional file).")
+
+
+    # ============================
+    # MONTHLY SALES AGGREGATION
+    # ============================
+    p_df["month"] = p_df["date"].dt.to_period("M").dt.to_timestamp()
+    monthly = (
+        p_df.groupby("month")["quantity_sold"]
+        .sum()
+        .reset_index()
+        .sort_values("month")
+    )
+
+    if monthly.empty:
+        st.warning("Not enough sales data to analyze.")
+    else:
+        # ============================
+        # MONTHLY SALES LINE PLOT
+        # ============================
+        import matplotlib.pyplot as plt
+
+        fig, ax = plt.subplots(figsize=(11,5))
+        ax.plot(
+            monthly["month"],
+            monthly["quantity_sold"],
+            marker="o",
+            color="#1f77b4",
+            linewidth=2.5,
+            markersize=8
+        )
+
+        ax.set_title(
+            f"Monthly Sales Trend – Product {selected_product}",
+            fontsize=18, fontweight="bold"
+        )
+        ax.set_xlabel("Month", fontsize=12)
+        ax.set_ylabel("Quantity Sold", fontsize=12)
+
+        plt.xticks(rotation=45)
+        plt.grid(True, linestyle="--", alpha=0.3)
+
+        st.pyplot(fig)
+
+        # ============================
+        # SUMMARY METRICS
+        # ============================
+        st.subheader("📊 Key Performance Indicators")
+
+        latest = monthly["quantity_sold"].iloc[-1]
+        previous = monthly["quantity_sold"].iloc[-2] if len(monthly) > 1 else 0
+        growth = latest - previous
+        next_month_prediction = int(latest + growth * 0.6)
+
+        seasonality_score = round(
+            monthly["quantity_sold"].std() / monthly["quantity_sold"].mean(), 2
+        )
+
+        peak_row = monthly.loc[monthly["quantity_sold"].idxmax()]
+        low_row = monthly.loc[monthly["quantity_sold"].idxmin()]
+
+        # Trend detection
+        if growth > 0:
+            trend = "📈 Increasing"
+            trend_color = "green"
+        elif growth < 0:
+            trend = "📉 Decreasing"
+            trend_color = "red"
+        else:
+            trend = "➖ Stable"
+            trend_color = "gray"
+
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Last Month Sales", latest)
+        col2.metric("Growth (MoM)", growth)
+        col3.metric("Next Month Prediction", next_month_prediction)
+
+        col4, col5, col6 = st.columns(3)
+        col4.metric("Seasonality Score", seasonality_score)
+        col5.metric("Peak Month", peak_row["month"].strftime("%b %Y"))
+        col6.metric("Lowest Month", low_row["month"].strftime("%b %Y"))
+
+        st.markdown(
+            f"<h4>Overall Trend: <span style='color:{trend_color};'>{trend}</span></h4>",
+            unsafe_allow_html=True
+        )
+
+        # ============================
+        # STORE AVERAGE COMPARISON
+        # ============================
+        st.subheader("🏪 Comparison Against Store Average")
+
+        store_monthly = (
+            sales_df.assign(date=pd.to_datetime(sales_df["date"]))
+            .assign(month=lambda x: x["date"].dt.to_period("M").dt.to_timestamp())
+            .groupby("month")["quantity_sold"]
+            .mean()
+            .reset_index()
+        )
+
+        latest_store_avg = int(store_monthly["quantity_sold"].iloc[-1])
+        st.metric("Store Avg Last Month", latest_store_avg)
+
+        # ============================
+        # YOY COMPARISON
+        # ============================
+        st.subheader("📘 Year-over-Year Comparison")
+
+        monthly["year"] = monthly["month"].dt.year
+        monthly["month_num"] = monthly["month"].dt.month
+
+        if monthly["year"].nunique() >= 2:
+            yoy_df = monthly.pivot_table(
+                index="month_num",
+                columns="year",
+                values="quantity_sold"
+            )
+
+            st.dataframe(yoy_df)
+        else:
+            st.info("Not enough years of data to calculate YOY comparison.")
+
+        # ============================
+        # MATPFN FORECAST PLACEHOLDER
+        # ============================
+        st.subheader("🤖 MATPFN Forecast (Coming Soon)")
+        st.info("""
+        MATPFN model will generate:
+        • Seasonal-adjusted predictions  
+        • Multi-agent fusion output  
+        • Confidence intervals  
+        """)
+
+        st.success("This dashboard is fully ready for MATPFN backend integration.")

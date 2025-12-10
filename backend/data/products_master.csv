@@ -1,0 +1,101 @@
+product_id,product_name,category,cost,margin_percent
+P0001,Fortune Sunflower Oil 1L,Grocery,70.28,19
+P0002,Tata Tea Premium 500g,Grocery,626.14,21
+P0003,Aashirvaad Atta 5kg,Grocery,356.34,16
+P0004,Sugar 1kg,Grocery,581.54,34
+P0005,Red Label Tea 250g,Grocery,782.61,11
+P0006,Colgate Toothpaste 200g,PersonalCare,435.41,31
+P0007,Pepsodent Toothpaste 150g,PersonalCare,405.89,31
+P0008,Lux Soap 4 Pack,PersonalCare,66.92,21
+P0009,Dettol Handwash 500ml,PersonalCare,222.07,38
+P0010,Surf Excel 1kg,HomeCare,404.91,34
+P0011,Ariel Matic 1kg,HomeCare,546.59,29
+P0012,Nescafe Classic 200g,Beverages,644.95,33
+P0013,Bru Coffee 200g,Beverages,310.94,33
+P0014,Kellogg's Cornflakes 500g,Grocery,62.09,35
+P0015,Maggi Noodles 6 Pack,Grocery,237.64,22
+P0016,Britannia Marie Gold 250g,Grocery,728.58,22
+P0017,Parle G 800g,Grocery,178.57,23
+P0018,Oreo Biscuits 300g,Grocery,367.18,14
+P0019,Good Day Cookies,Grocery,745.65,17
+P0020,Amul Butter 500g,Dairy,29.67,31
+P0021,Amul Cheese Slices,Dairy,484.43,36
+P0022,Milk 1L Packet,Dairy,760.6,19
+P0023,Curd 500g,Dairy,191.94,16
+P0024,Lays Chips 100g,Snacks,443.31,25
+P0025,Kurkure Masala 120g,Snacks,728.21,21
+P0026,Coca Cola 1.25L,Beverages,115.2,37
+P0027,Pepsi 1.25L,Beverages,423.5,28
+P0028,Sprite 1.25L,Beverages,602.82,38
+P0029,Bisleri Water 1L,Beverages,538.52,26
+P0030,Real Mango Juice 1L,Beverages,379.52,15
+P0031,Dove Shampoo 650ml,PersonalCare,171.83,13
+P0032,Clinic Plus Shampoo 650ml,PersonalCare,397.71,23
+P0033,Pantene Shampoo 650ml,PersonalCare,304.18,10
+P0034,Dove Soap 4 Pack,PersonalCare,387.15,31
+P0035,Santoor Soap 4 Pack,PersonalCare,299.05,33
+P0036,Harpic Toilet Cleaner 1L,HomeCare,671.96,11
+P0037,Lizol Floor Cleaner 1L,HomeCare,617.23,23
+P0038,Domex Cleaner 1L,HomeCare,258.06,18
+P0039,Vim Bar 3 Pack,HomeCare,462.37,30
+P0040,Vim Liquid 500ml,HomeCare,228.08,37
+P0041,Tata Salt 1kg,Grocery,367.75,24
+P0042,Everest Masala 100g,Grocery,288.85,23
+P0043,MDH Masala 100g,Grocery,529.35,19
+P0044,Chilli Powder 200g,Grocery,302.58,20
+P0045,Turmeric Powder 200g,Grocery,372.68,10
+P0046,Toor Dal 1kg,Grocery,578.27,12
+P0047,Moong Dal 1kg,Grocery,336.26,26
+P0048,Urad Dal 1kg,Grocery,726.07,33
+P0049,Basmati Rice 5kg,Grocery,152.56,16
+P0050,Sona Masoori Rice 5kg,Grocery,595.48,28
+P0051,Parboiled Rice 5kg,Grocery,343.68,19
+P0052,Black Pepper 100g,Grocery,346.9,19
+P0053,Jeera 200g,Grocery,511.16,23
+P0054,Groundnut Oil 1L,Grocery,423.1,31
+P0055,Rice Bran Oil 1L,Grocery,337.76,21
+P0056,Sunlight Detergent 1kg,HomeCare,11.13,11
+P0057,Ghadi Detergent 1kg,HomeCare,82.89,24
+P0058,Tide 1kg,HomeCare,570.42,26
+P0059,Comfort Fabric Conditioner,HomeCare,424.23,26
+P0060,Rin Bar 4 Pack,HomeCare,559.97,35
+P0061,Pedigree Dog Food 3kg,PetCare,764.82,27
+P0062,Cat Food 1kg,PetCare,549.5,24
+P0063,Mops,Household,51.97,11
+P0064,Floor Broom,Household,253.99,31
+P0065,Bathroom Brush,Household,478.15,29
+P0066,Steel Scrubber 6 Pack,Household,195.75,28
+P0067,Garbage Bags Large,Household,772.33,10
+P0068,Paper Cups 100 Pack,PartyNeeds,756.59,23
+P0069,Paper Plates 50 Pack,PartyNeeds,680.24,36
+P0070,Aluminium Foil 25m,PartyNeeds,383.14,20
+P0071,Bread 400g,Bakery,674.77,30
+P0072,Eggs Pack of 12,Dairy,113.58,36
+P0073,Bananas 1 Dozen,Fruits,253.9,37
+P0074,Apples 1kg,Fruits,375.77,38
+P0075,Oranges 1kg,Fruits,596.06,18
+P0076,Onion 1kg,Vegetables,393.8,33
+P0077,Potato 1kg,Vegetables,118.13,11
+P0078,Tomato 1kg,Vegetables,281.39,14
+P0079,Carrot 1kg,Vegetables,266.3,35
+P0080,Green Chilli 250g,Vegetables,247.33,22
+P0081,Ginger 250g,Vegetables,140.75,29
+P0082,Garlic 500g,Vegetables,337.77,32
+P0083,Coriander Leaves,Vegetables,364.02,20
+P0084,Spinach Bunch,Vegetables,622.17,38
+P0085,Broccoli 500g,Vegetables,639.15,17
+P0086,Notebook 200 Pages,Stationery,422.69,27
+P0087,Pen 5 Pack,Stationery,373.9,25
+P0088,Pencil Box,Stationery,624.79,10
+P0089,Eraser 5 Pack,Stationery,710.96,28
+P0090,Sharpener 3 Pack,Stationery,543.19,17
+P0091,Charger USB,Electronics,642.38,22
+P0092,Earphones Wired,Electronics,751.9,26
+P0093,LED Bulb 9W,Electronics,42.12,10
+P0094,Extension Board 4 Socket,Electronics,701.78,22
+P0095,Mobile Data Cable,Electronics,228.48,19
+P0096,Retail Product 96,Grocery,385.85,24
+P0097,Retail Product 97,Grocery,639.44,34
+P0098,Retail Product 98,Grocery,576.62,12
+P0099,Retail Product 99,Grocery,126.25,26
+P0100,Retail Product 100,Grocery,530.41,21
